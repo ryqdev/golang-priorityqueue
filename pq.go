@@ -2,7 +2,7 @@ package golang_priorityqueue
 
 type PriorityQueue[T comparable] struct {
 	Array []T
-	Rule  func(T, T) bool
+	Less  func(T, T) bool
 }
 
 func (p *PriorityQueue[T]) Heapify() {
@@ -15,10 +15,10 @@ func (p *PriorityQueue[T]) heapifyDown(idx int) {
 	cur := idx
 	left := 2*idx + 1
 	right := 2*idx + 2
-	if left < len(p.Array) && p.Rule(p.Array[left], p.Array[cur]) {
+	if left < len(p.Array) && p.Less(p.Array[left], p.Array[cur]) {
 		cur = left
 	}
-	if right < len(p.Array) && p.Rule(p.Array[right], p.Array[cur]) {
+	if right < len(p.Array) && p.Less(p.Array[right], p.Array[cur]) {
 		cur = right
 	}
 	if cur != idx {
@@ -38,7 +38,7 @@ func (p *PriorityQueue[T]) heapifyUp(idx int) {
 	}
 	cur := idx
 	father := (idx - 1) / 2
-	if p.Rule(p.Array[cur], p.Array[father]) {
+	if p.Less(p.Array[cur], p.Array[father]) {
 		cur = father
 	}
 	if cur != idx {

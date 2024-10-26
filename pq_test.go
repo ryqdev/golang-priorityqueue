@@ -13,7 +13,7 @@ func TestPriorityQueueInt(t *testing.T) {
 	// Create a priority queue of integers
 	pq := golang_priorityqueue.PriorityQueue[int]{
 		Array: []int{},
-		Rule:  rule,
+		Less:  rule,
 	}
 
 	// Test Empty
@@ -48,7 +48,7 @@ func TestPriorityQueueString(t *testing.T) {
 	// Create a priority queue of strings
 	pq := golang_priorityqueue.PriorityQueue[string]{
 		Array: []string{},
-		Rule:  rule,
+		Less:  rule,
 	}
 
 	// Test Empty
@@ -82,7 +82,7 @@ func TestPriorityQueueHeapify(t *testing.T) {
 	// Create a priority queue with unordered elements
 	pq := golang_priorityqueue.PriorityQueue[int]{
 		Array: []int{10, 20, 5, 7, 2},
-		Rule:  rule,
+		Less:  rule,
 	}
 
 	// Call Heapify to reorder elements into a valid heap
